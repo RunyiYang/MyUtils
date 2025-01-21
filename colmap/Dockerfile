@@ -6,7 +6,7 @@ ARG NVIDIA_CUDA_VERSION=11.8.0
 FROM docker.io/nvidia/cuda:${NVIDIA_CUDA_VERSION}-devel-ubuntu${UBUNTU_VERSION} as builder
 
 # Disable interactive prompts
-ENV DEBIAN_FRONTEND=noninteractive
+ENV DEBIAN_FRONTEND=interactive
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     git \
@@ -31,8 +31,12 @@ RUN apt-get update && apt-get install -y \
     libceres-dev
 
 RUN apt-get install -y \
+    nvidia-container-toolkit \
     nvidia-cuda-toolkit \
-    nvidia-cuda-toolkit-gcc
+    nvidia-cuda-toolkit-gcc \
+    nvidia-driver-535 \
+    vim 
+
 # Clone and build COLMAP from source
 WORKDIR /home/runyi_yang/SGSLAM/
 
