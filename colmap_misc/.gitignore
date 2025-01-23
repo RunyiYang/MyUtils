@@ -1,0 +1,8 @@
+*.sh
+*pyc
+__pycache__/
+*.db
+*.out
+*.png
+*.npy
+*.ply
