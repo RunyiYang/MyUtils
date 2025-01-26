@@ -40,7 +40,7 @@ RUN apt-get install -y \
 # Clone and build COLMAP from source
 WORKDIR /home/runyi_yang/SGSLAM/
 
-RUN git clone https://github.com/colmap/colmap.git && \
+RUN git clone https://github.com/colmap/colmap.git -b release/3.11 && \
     cd colmap && \
     mkdir build && cd build && \
     cmake .. -GNinja -DCMAKE_CUDA_ARCHITECTURES=86 && \
@@ -51,5 +51,3 @@ RUN git clone https://github.com/colmap/colmap.git && \
 RUN mkdir /data
 WORKDIR /data
 
-# Default command to show colmap help
-CMD ["colmap", "--help"]

@@ -12,9 +12,9 @@
 #SBATCH --error=colmap_docker.error     # Redirect stderr to a separate error log file
 #SBATCH --mail-type=ALL         # Send updates via email
 
-# podman build -t colmap-cuda:latest .
+# podman build -t colmap-cuda-interactive:latest .
 
-slurm-podman-run --rm -it \
+slurm-podman-run --rm -it --gpu\
     -v /home/runyi_yang/SGSLAM:/data \
     colmap-cuda:latest colmap automatic_reconstructor \
     --workspace_path /data/MyUtils/colmap_replica_try \
